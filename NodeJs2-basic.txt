@@ -1,0 +1,52 @@
+module express-generator giúp tạo project gần giống với tổ chứ MVC
+-tắt eslint trong file:
+/* eslint no-use-before-define: 0 */  // --> OFF
+ 
+or
+ 
+/* eslint no-use-before-define: 2 */  // --> ON
+
+1. npm init: tạo các file package.json, ...
+2. tạo file: index.js
+3. vào backage.json thay đổi script thành: "start: node index.js"  để run được app
+4. tải nhũng cái cần thiết cho project: mongoose, express, cors, body-parser, morgan, dotenv,...
+    -body-parser: dùng để parser cái dạng json về, khi gửi request dưới dạng json nó sẽ giúp parser vào document.
+    -morgan: khi chúng ta send request nó sẽ bao dưới terminal 
+
+5. setup server: 
+    -vào file index.js và code ở đó
+
+6. tạo dataBase với mongoDB online, và kết nối với database. Để kết nối với dataBase, mongoose sẽ làm nhiệm vụ đó
+7. tạo file .gitignore vào bỏ file .env  và .node_modules vào trong đó để khi up lên github không up cả link của database
+
+8. tạo thư mục model, thư mục này chứa toàn bộ database model, file để tạo khung cho database. tạo thư mục controllers. tạo thư mục routes: để chứa những cái routes của mình
+
+9. khai báo định dạng data ở trong model
+
+10. vì sử dụng mô hình MVC nên chia các folder ra chi tiết hơn 
+
+11. kết nối CSDL MySQL
+step1: cài đặt module MySQL: 
+step2: tạo file cấu hình kết nối CSDL mySQL
+step3: tạo model và các phương thức thao tác dữ liệu
+
+NOTE:
+-res.end(): được sử dụng để kết thúc quá trình phản hồi, nó được sử dụng để nhanh chóng kết thúc phản hồi mà không cần bất kỳ dữ liệu nào.
+
+-res.send(): sẽ gửi phản hồi HTTP
+ví dụ: muốn send một file
++đầu tiên tạo một file (file html chẳng hạn)
++sau đó bỏ đường dẫn tuyệt đối (__dirname + "./...") của file vào sendFile()
+
+-cài Nodemon: yarn add nodemon, sau đó vào package.json sửa: "start": "nodemon index.js"
+
+-mô hình MVC:
++điều khiển: controller
++xử lý dữ liệu: model
++hiển thị dữ liệu: view
+
++CONTROLLER được tạo ra để xử lý các yêu cầu từ user, nó thực hiện tiếp nhận tham số, gọi các hàm trong model,nạp các view cần thiết. trong nodejs, routes đóng vai trò như controller
++MODEL dùng để cung cấp dữ liệu, thực hiện  kết nối, trích lọc, chèn chỉnh sửa dữ liệu trong database, tương tác với file system, network
++VIEW là một giao diên, dữ liệu view hiểu thị ra do controller cung cấp
+
+
