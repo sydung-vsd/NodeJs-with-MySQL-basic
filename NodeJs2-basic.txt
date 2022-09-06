@@ -19,16 +19,29 @@ or
 6. tạo dataBase với mongoDB online, và kết nối với database. Để kết nối với dataBase, mongoose sẽ làm nhiệm vụ đó
 7. tạo file .gitignore vào bỏ file .env  và .node_modules vào trong đó để khi up lên github không up cả link của database
 
-8. tạo thư mục model, thư mục này chứa toàn bộ database model, file để tạo khung cho database. tạo thư mục controllers. tạo thư mục routes: để chứa những cái routes của mình
+8. trong thư mục app -> tạo thư mục model, thư mục này chứa toàn bộ database model, file để tạo khung cho database. tạo thư mục controllers. tạo thư mục routes: để chứa những cái routes của mình
 
 9. khai báo định dạng data ở trong model
 
 10. vì sử dụng mô hình MVC nên chia các folder ra chi tiết hơn 
 
 11. kết nối CSDL MySQL
-step1: cài đặt module MySQL: 
+step1: cài đặt module MySQL:  npm install mysql 
 step2: tạo file cấu hình kết nối CSDL mySQL
 step3: tạo model và các phương thức thao tác dữ liệu
+step4: Nếu kết nối với MySql khoogn thành công thì vào đây đọc(https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server)
+
+12. Bảo mật API với JWT (json web token)
+    khi đăng nhập, server sẽ kiểm tra cái tài khoản đó có tồn tại không, nếu có thì server sẽ tạo một mã token và gửi lại phía client, phía client sẽ dùng cái mã token đó gửi kèm với request, trước khi đi vào router ứng dụng sẽ check coi mã token có hợp hay không, nếu có thì mới cho đi vào API của router
+    
+    -Để cài đặt package đó: npm install --save jsonwebtoken
+    -step1: Tạo phương thức để tạo ra mã token
+        .tạo một file để chứa phương thức tạo token
+    -step2: Tạo phương thức validate token gửi lên client có hợp lệ không
+    -step3: Tạo phương thức làm mới mã token sau khi hết hạn
+    -step4: Middleware áp dụng cho các routing cần validate token JWT
+
+
 
 NOTE:
 -res.end(): được sử dụng để kết thúc quá trình phản hồi, nó được sử dụng để nhanh chóng kết thúc phản hồi mà không cần bất kỳ dữ liệu nào.
@@ -48,5 +61,7 @@ ví dụ: muốn send một file
 +CONTROLLER được tạo ra để xử lý các yêu cầu từ user, nó thực hiện tiếp nhận tham số, gọi các hàm trong model,nạp các view cần thiết. trong nodejs, routes đóng vai trò như controller
 +MODEL dùng để cung cấp dữ liệu, thực hiện  kết nối, trích lọc, chèn chỉnh sửa dữ liệu trong database, tương tác với file system, network
 +VIEW là một giao diên, dữ liệu view hiểu thị ra do controller cung cấp
+
+-
 
 
